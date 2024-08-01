@@ -13,7 +13,7 @@ cli-source = "inotia00/revanced-cli"
 rv-brand = "ReVanced Extended"
 build-mode = "both"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
-uptodown-dlurl = "https://youtube-music.fr.uptodown.com/android"
+uptodown-dlurl = "https://youtube-music.en.uptodown.com/android"
 included-patches = "'Custom header for YouTube Music' 'Hide overlay filter' 'Hide player overlay filter'"
 excluded-patches = "'Custom branding icon for YouTube Music' 'Custom branding name for YouTube Music'"
 
@@ -25,7 +25,7 @@ cli-source = "inotia00/revanced-cli"
 rv-brand = "ReVanced Extended"
 build-mode = "both"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
-uptodown-dlurl = "https://youtube.fr.uptodown.com/android"
+uptodown-dlurl = "https://youtube.en.uptodown.com/android"
 included-patches = "'Custom header for YouTube' 'Force hide player buttons background' 'Hide Shorts dimming' 'MaterialYou' 'Visual preferences icons'"
 excluded-patches = "'Custom branding icon for YouTube' 'Custom branding name for YouTube'"
 
@@ -42,7 +42,7 @@ rv-brand = "ReVanced Extended"
 build-mode = "both"
 version = "auto"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/redditinc/reddit/"
-uptodown-dlurl = "https://reddit-official-app.fr.uptodown.com/android"
+uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
 
 [X-material-design] #works
 patches-source = "crimera/piko"
@@ -50,7 +50,7 @@ integrations-source = "crimera/revanced-integrations"
 build-mode = "both"
 rv-brand = "Piko"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter/"
-uptodown-dlurl = "https://twitter.fr.uptodown.com/android"
+uptodown-dlurl = "https://twitter.en.uptodown.com/android"
 included-patches = "'Hide Banner' 'Hide Live Threads' 'Disable chirp font' 'Hide Community Notes' 'Hide FAB' 'Hide FAB Menu Buttons' 'Custom sharing domain' 'Customize profile tabs' 'Hide promote button' 'Force enable translate' 'Add ability to copy media link' 'Customize Navigation Bar items' 'Hide promote button' 'Force enable translate' 'Delete from database'"
 enabled = false
 
@@ -58,17 +58,17 @@ enabled = false
 build-mode = "both"
 version = "auto"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/strava-inc/strava-running-and-cycling-gps/"
-uptodown-dlurl = "https://strava.fr.uptodown.com/android"
+uptodown-dlurl = "https://strava.en.uptodown.com/android"
 
 [Yuka] #works
 build-mode = "both"
 version = "auto"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/yuka-apps/yuka-food-cosmetic-scan/"
-uptodown-dlurl = "https://yuka.fr.uptodown.com/android"
+uptodown-dlurl = "https://yuka.en.uptodown.com/android"
 
 [Photomath]
 build-mode = "both"
 version = "auto"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/photomath/"
-uptodown-dlurl = "https://uptodown-android.fr.uptodown.com/android"
+uptodown-dlurl = "https://uptodown-android.en.uptodown.com/android"
 apkpure-dlurl = "https://apkpure.com/photomath/com.microblink.photomath"
