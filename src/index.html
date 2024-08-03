@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Asset Scraper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="h-full">
+    <div class="min-h-full">
+        <nav class="bg-indigo-600">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
+                        </div>
+                        <div class="ml-4 text-white text-xl font-bold">GitHub Asset Scraper</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-10">
+            <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <form id="githubForm" class="space-y-6">
+                            <div>
+                                <label for="githubUrl" class="block text-sm font-medium text-gray-700">GitHub Repository URL</label>
+                                <div class="mt-1 flex rounded-md shadow-sm">
+                                    <input type="text" name="githubUrl" id="githubUrl" 
+                                           class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" 
+                                           placeholder="https://github.com/owner/repo">
+                                    <button type="submit" 
+                                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-r-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
+                                        Fetch Assets
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div id="loading" class="hidden mt-8">
+                            <div class="flex justify-center items-center">
+                                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500"></div>
+                            </div>
+                            <p class="mt-4 text-center text-sm text-gray-500">Fetching assets...</p>
+                        </div>
+
+                        <div id="error" class="hidden mt-8 bg-red-50 border-l-4 border-red-400 p-4" role="alert">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-red-700" id="errorMessage"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="results" class="hidden mt-8">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-6">Assets from latest release</h3>
+                            <div id="assetCards" class="space-y-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function parseGitHubUrl(url) {
+            const regex = /github\.com\/([^\/]+)\/([^\/]+)/;
+            const match = url.match(regex);
+            if (match && match[1] && match[2]) {
+                return { owner: match[1], repo: match[2] };
+            }
+            throw new Error('Invalid GitHub URL');
+        }
+
+        function formatFileSize(bytes) {
+            const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+            let size = bytes;
+            let unitIndex = 0;
+            while (size >= 1024 && unitIndex < units.length - 1) {
+                size /= 1024;
+                unitIndex++;
+            }
+            return `${size.toFixed(1)} ${units[unitIndex]}`;
+        }
+
+        function formatTime(isoString) {
+            const date = new Date(isoString);
+            const now = new Date();
+            const diffInMinutes = Math.floor((now - date) / (1000 * 60));
+
+            if (diffInMinutes < 60) {
+                return `${diffInMinutes} minutes ago`;
+            } else if (diffInMinutes < 1440) {
+                const hours = Math.floor(diffInMinutes / 60);
+                return `${hours} hours ago`;
+            } else {
+                const days = Math.floor(diffInMinutes / 1440);
+                return `${days} days ago`;
+            }
+        }
+
+        function groupAssets(assets) {
+            const grouped = {};
+            assets.forEach(asset => {
+                const appName = asset.name.split('-')[0].charAt(0).toUpperCase() + asset.name.split('-')[0].slice(1);
+                const isSourceCode = /\.(js|py|cpp|java|html|css)$/.test(asset.name);
+                
+                if (isSourceCode) {
+                    if (!grouped['Source Code']) {
+                        grouped['Source Code'] = [];
+                    }
+                    grouped['Source Code'].push(asset);
+                } else {
+                    if (!grouped[appName]) {
+                        grouped[appName] = [];
+                    }
+                    grouped[appName].push(asset);
+                }
+            });
+            return grouped;
+        }
+
+        function populateCards(assets) {
+            const cardsContainer = document.getElementById('assetCards');
+            cardsContainer.innerHTML = '';
+
+            const groupedAssets = groupAssets(assets);
+
+            for (const [appName, appAssets] of Object.entries(groupedAssets)) {
+                const card = document.createElement('div');
+                card.className = 'bg-white shadow-md rounded-lg overflow-hidden';
+
+                const title = document.createElement('h4');
+                title.className = 'text-lg font-semibold bg-gray-100 px-4 py-2 border-b';
+                title.textContent = appName;
+                card.appendChild(title);
+
+                const assetList = document.createElement('ul');
+                assetList.className = 'divide-y divide-gray-200';
+
+                appAssets.forEach(asset => {
+                    const assetItem = document.createElement('li');
+                    assetItem.className = 'px-4 py-3 hover:bg-gray-50 transition-colors duration-150';
+
+                    const assetInfo = document.createElement('div');
+                    assetInfo.className = 'flex justify-between items-center';
+                    assetInfo.innerHTML = `
+                        <div>
+                            <p class="text-sm font-medium text-gray-900">${asset.name}</p>
+                            <p class="text-xs text-gray-500">${asset.name.split('.').pop().toUpperCase()} • ${formatFileSize(asset.size)} • ${formatTime(asset.updated_at)}</p>
+                        </div>
+                        <a href="${asset.browser_download_url}" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium transition-colors duration-150">
+                            Download
+                        </a>
+                    `;
+
+                    assetItem.appendChild(assetInfo);
+                    assetList.appendChild(assetItem);
+                });
+
+                card.appendChild(assetList);
+                cardsContainer.appendChild(card);
+            }
+        }
+
+        async function fetchAllReleases(owner, repo) {
+            const apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases`;
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error('Failed to fetch release data');
+            }
+            return await response.json();
+        }
+
+        function getMostRecentAssets(releases) {
+            const assetMap = new Map();
+            releases.forEach(release => {
+                release.assets.forEach(asset => {
+                    const existingAsset = assetMap.get(asset.name);
+                    if (!existingAsset || new Date(asset.updated_at) > new Date(existingAsset.updated_at)) {
+                        assetMap.set(asset.name, asset);
+                    }
+                });
+            });
+            return Array.from(assetMap.values());
+        }
+
+        document.getElementById('githubForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const githubUrl = document.getElementById('githubUrl').value;
+            document.getElementById('loading').classList.remove('hidden');
+            document.getElementById('error').classList.add('hidden');
+            document.getElementById('results').classList.add('hidden');
+
+            try {
+                const { owner, repo } = parseGitHubUrl(githubUrl);
+                const releases = await fetchAllReleases(owner, repo);
+                const assets = getMostRecentAssets(releases);
+                populateCards(assets);
+                document.getElementById('results').classList.remove('hidden');
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('errorMessage').textContent = error.message;
+                document.getElementById('error').classList.remove('hidden');
+            } finally {
+                document.getElementById('loading').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
