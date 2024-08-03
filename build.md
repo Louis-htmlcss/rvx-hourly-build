@@ -1,7 +1,7 @@
-Reddit-Extended: 2024.17.0  
 YouTube-Extended: 19.16.39  
-Strava: 320.12  
+Reddit-Extended: 2024.17.0  
 Yuka: 4.29  
+Strava: 320.12  
 Photomath: 8.37.0  
 
 Install [Microg](https://github.com/ReVanced/GmsCore/releases) for non-root YouTube and YT Music APKs  
