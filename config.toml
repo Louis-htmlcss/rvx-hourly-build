@@ -29,6 +29,19 @@ uptodown-dlurl = "https://youtube.en.uptodown.com/android"
 included-patches = "'Custom header for YouTube' 'Force hide player buttons background' 'Hide Shorts dimming' 'MaterialYou' 'Visual preferences icons'"
 excluded-patches = "'Custom branding icon for YouTube' 'Custom branding name for YouTube'"
 
+
+[YouTube-Extended-Apk-Root]
+app-name = "YouTube"
+patches-source = "inotia00/revanced-patches"
+integrations-source = "inotia00/revanced-integrations"
+cli-source = "inotia00/revanced-cli"
+rv-brand = "ReVanced Extended"
+build-mode = "both"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
+uptodown-dlurl = "https://youtube.en.uptodown.com/android"
+included-patches = "'Custom header for YouTube' 'Force hide player buttons background' 'Hide Shorts dimming' 'MaterialYou' 'Visual preferences icons'"
+excluded-patches = "'Custom branding icon for YouTube' 'Custom branding name for YouTube' 'GmsCore support'"
+
 [Twitch]
 archive-dlurl = "https://archive.org/download/jhc-apks/apks/tv.twitch.android.app"
 enabled = false
