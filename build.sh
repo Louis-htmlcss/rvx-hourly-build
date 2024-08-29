@@ -178,15 +178,47 @@ wait
 rm -rf temp/tmp.*
 if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 
-log "\nInstall [Microg](https://github.com/ReVanced/GmsCore/releases) for non-root YouTube and YT Music APKs"
-log "Use [zygisk-detach](https://github.com/j-hc/zygisk-detach) to detach root ReVanced YouTube and YT Music from Play Store"
-log "\n[revanced-magisk-module](https://github.com/j-hc/revanced-magisk-module)\n"
-log "$(cat $TEMP_DIR/*-rv/changelog.md)"
+# Titre principal
+log "# 📦 ReVanced Build Changelog"
+log ""
 
+# Informations importantes
+log "## ℹ️ Important Information"
+create_markdown_table "Description" "Details"
+log "| 🔧 Install MicroG | [Download MicroG](https://github.com/ReVanced/GmsCore/releases) for non-root YouTube and YT Music APKs |"
+log "| 🔒 Use Zygisk-Detach | [Zygisk-Detach](https://github.com/j-hc/zygisk-detach) to detach root ReVanced YouTube and YT Music from Play Store |"
+log "| 📘 More Information | [ReVanced Magisk Module](https://github.com/j-hc/revanced-magisk-module) |"
+log ""
+
+# Changelog des composants
+log "## 🔄 Component Changes"
+create_markdown_table "Component" "Version"
+while IFS= read -r line; do
+    component=$(echo "$line" | cut -d: -f1)
+    version=$(echo "$line" | cut -d: -f2- | sed 's/^ *//')
+    log "| $component | $version |"
+done < "$TEMP_DIR/*-rv/changelog.md"
+log ""
+
+# Liens vers les changelogs complets
+log "## 📋 Detailed Changelogs"
+log "- [Patches Changelog]($(grep "\[Changelog\]" "$TEMP_DIR/*-rv/changelog.md" | sed 's/.*(\(.*\))/\1/'))"
+log ""
+
+# Applications ignorées
 SKIPPED=$(cat $TEMP_DIR/skipped 2>/dev/null || :)
 if [ -n "$SKIPPED" ]; then
-	log "\nSkipped:"
-	log "$SKIPPED"
+    log "## ⏭️ Skipped Applications"
+    create_markdown_table "Application" "Reason"
+    echo "$SKIPPED" | while IFS= read -r line; do
+        app=$(echo "$line" | cut -d: -f1)
+        reason=$(echo "$line" | cut -d: -f2- | sed 's/^ *//')
+        log "| $app | $reason |"
+    done
 fi
+
+log ""
+log "---"
+log "🏗️ Build completed successfully!"
 
 pr "Done"

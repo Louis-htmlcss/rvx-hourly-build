@@ -165,7 +165,20 @@ gh_dl() {
 	fi
 }
 
-log() { echo -e "$1  " >>"build.md"; }
+log() {
+    echo -e "$1" >> "build.md"
+}
+
+create_markdown_table() {
+    local header="$1"
+    local content="$2"
+    
+    echo "| $header |" >> "build.md"
+    echo "|$(printf -- '-%.0s' {1..50})|" >> "build.md"
+    echo "$content" | sed 's/^/| /' | sed 's/$/ |/' >> "build.md"
+    echo "" >> "build.md"
+}
+
 get_largest_ver() {
 	local vers m
 	vers=$(tee)
