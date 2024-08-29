@@ -1,8 +1,11 @@
 YouTube-d4n3436-android5: 16.40.36  
 YouTube-kitadai31-android6-7: 17.34.36  
+Reddit-Extended-inotia00: 2024.17.0  
 YouTube-Extended-inotia00: 19.16.39  
-YouTube-rufusin: 19.16.39  
 YouTube-anddea: 19.16.39  
+YouTube-rufusin: 19.16.39  
+Reddit-rufusin: 2024.22.0  
+Reddit-anddea: 2024.17.0  
 
 Install [Microg](https://github.com/ReVanced/GmsCore/releases) for non-root YouTube and YT Music APKs  
 Use [zygisk-detach](https://github.com/j-hc/zygisk-detach) to detach root ReVanced YouTube and YT Music from Play Store  
@@ -28,6 +31,11 @@ CLI: j-hc/revanced-cli-4.6.0-all.jar
 Integrations: kitadai31/revanced-integrations-0.96.10.apk  
 Patches: kitadai31/revanced-patches-2.160.10.jar  
 [Changelog](https://github.com/kitadai31/revanced-patches-android6-7/releases/tag/v2.160.10)
+
+CLI: j-hc/revanced-cli-4.6.0-all.jar  
+Integrations: ReVanced/revanced-integrations-1.13.0.apk  
+Patches: ReVanced/revanced-patches-4.13.3.jar  
+[Changelog](https://github.com/ReVanced/revanced-patches/releases/tag/v4.13.3)
 
 CLI: j-hc/revanced-cli-4.6.0-all.jar  
 Integrations: rufusin/revanced-integrations-v0.151.6_m.apk  
