@@ -153,5 +153,42 @@ jobs:
           ls build/*.zip | sed 's|build/||' | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
           echo "## APKs" >> $GITHUB_STEP_SUMMARY
           ls build/*.apk | sed 's|build/||' | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
-          echo "## Build Log" >> $GITHUB_STEP_SUMMARY
+          echo "## Changelog" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
           cat build.md >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload to release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${NEXT_VER_CODE}"
+          gh release create "$TAG" \
+            --title "ReVanced v${NEXT_VER_CODE}" \
+            --notes-file build.md
+          for file in build/*; do
+            gh release upload "$TAG" "$file"
+          done
+
+      - name: Generate Release Summary
+        run: |
+          {
+            echo "# ReVanced Build v${NEXT_VER_CODE}"
+            echo
+            echo "## Modules"
+            ls build/*.zip | sed 's|build/||' | sed 's/^/- /'
+            echo
+            echo "## APKs"
+            ls build/*.apk | sed 's|build/||' | sed 's/^/- /'
+            echo
+            echo "## Changelog"
+            echo '```'
+            cat build.md
+            echo '```'
+          } > release_summary.md
+
+      - name: Update Release Description
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release edit "${NEXT_VER_CODE}" --notes-file release_summary.md
