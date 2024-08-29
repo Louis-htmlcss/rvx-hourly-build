@@ -44,6 +44,7 @@ rv-brand = "YT-Advanced ReVanced"
 build-mode = "both"
 included-patches = "'Add splash animation' 'Change player flyout panel toggles' 'Disable landscape mode' 'Enable debug logging' 'Hide animated button background' 'Hide double tap overlay filter' 'Hide double tap to like animations' 'Hide fullscreen button' 'Hide player button background' 'Hide player chapters' 'Hide voice search button' 'MaterialYou' 'Shorts outline button' 'Spoof player parameters'"
 excluded-patches = "'Custom branding icon YouTube' 'Custom branding name YouTube'"
+enabled = false
 
 [YouTube-d4n3436-android5]
 apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube/"
@@ -93,7 +94,7 @@ build-mode = "both"
 included-patches = "'Hide double tap overlay filter' 'Hide overlay filter' 'Hide player overlay filter' 'Replace cast button'"
 excluded-patches = "'Custom branding icon YouTube Music' 'Custom branding name YouTube Music'"
 
-[Music]
+[Music-YT-Advanced]
 apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube-music/"
 patches-source = "YT-Advanced/ReX-patches"
 integrations-source = "YT-Advanced/revanced-integrations"
@@ -101,6 +102,7 @@ rv-brand = "YT-Advanced ReVanced"
 build-mode = "both"
 included-patches = "'Disable overlay filter' 'Enable color match player' 'Enable debug logging' 'Enable old player background' 'Enable old player layout' 'Enable old style miniplayer' 'Enable zen mode' 'Hide double tap overlay filter' 'Hide player overlay filter' 'Hide voice search button' 'Replace cast button'"
 excluded-patches = "'Custom branding icon YouTube Music' 'Custom branding name YouTube Music'"
+enabled = false
 
 ##########################################################################################
 
@@ -136,12 +138,13 @@ integrations-source = "anddea/revanced-integrations"
 rv-brand = "anddea ReVanced"
 build-mode = "both"
 
-[Reddit]
+[Reddit-YT-Advanced]
 apkmirror-dlurl = "https://apkmirror.com/apk/redditinc/reddit/"
 patches-source = "YT-Advanced/ReX-patches"
 integrations-source = "YT-Advanced/revanced-integrations"
 rv-brand = "YT-Advanced ReVanced"
 build-mode = "both"
+enabled = false
 
 ##########################################################################################
 
