@@ -72,12 +72,12 @@ cli-source = "inotia00/revanced-cli"
 rv-brand = "ReVanced Extended"
 build-mode = "both"
 archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.youtube.music"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
 included-patches = "'Custom header for YouTube Music' 'Hide overlay filter' 'Hide player overlay filter'"
 excluded-patches = "'Custom branding icon for YouTube Music' 'Custom branding name for YouTube Music'"
 enabled = false
 
 [Music-rufusin]
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.youtube.music"
 apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube-music/"
 patches-source = "rufusin/revanced-patches"
 integrations-source = "rufusin/revanced-integrations"
@@ -86,6 +86,7 @@ build-mode = "both"
 included-patches = "'Disable overlay filter' 'Enable color match player' 'Enable debug logging' 'Enable old player background' 'Enable old player layout' 'Enable old style miniplayer' 'Enable zen mode' 'Force hide voice search button' 'Hide player overlay filter' 'Replace cast button'"
 
 [Music-anddea]
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.youtube.music"
 apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube-music/"
 patches-source = "anddea/revanced-patches"
 integrations-source = "anddea/revanced-integrations"
@@ -95,6 +96,7 @@ included-patches = "'Hide double tap overlay filter' 'Hide overlay filter' 'Hide
 excluded-patches = "'Custom branding icon YouTube Music' 'Custom branding name YouTube Music'"
 
 [Music-YT-Advanced]
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.youtube.music"
 apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube-music/"
 patches-source = "YT-Advanced/ReX-patches"
 integrations-source = "YT-Advanced/revanced-integrations"
@@ -120,10 +122,12 @@ cli-source = "inotia00/revanced-cli"
 rv-brand = "ReVanced Extended"
 build-mode = "both"
 version = "auto"
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.reddit.frontpage"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/redditinc/reddit/"
 uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
 
 [Reddit-rufusin]
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.reddit.frontpage"
 apkmirror-dlurl = "https://apkmirror.com/apk/redditinc/reddit/"
 patches-source = "rufusin/revanced-patches"
 integrations-source = "rufusin/revanced-integrations"
@@ -131,6 +135,7 @@ rv-brand = "rufusin ReVanced"
 build-mode = "both"
 
 [Reddit-anddea]
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.reddit.frontpage"
 apkmirror-dlurl = "https://apkmirror.com/apk/redditinc/reddit/"
 patches-source = "anddea/revanced-patches"
 integrations-source = "anddea/revanced-integrations"
@@ -138,6 +143,7 @@ rv-brand = "anddea ReVanced"
 build-mode = "both"
 
 [Reddit-YT-Advanced]
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.reddit.frontpage"
 apkmirror-dlurl = "https://apkmirror.com/apk/redditinc/reddit/"
 patches-source = "YT-Advanced/ReX-patches"
 integrations-source = "YT-Advanced/revanced-integrations"
