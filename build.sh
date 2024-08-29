@@ -201,8 +201,8 @@ done < "$TEMP_DIR/*-rv/changelog.md"
 log ""
 
 # Liens vers les changelogs complets
-log "## 📋 Detailed Changelogs"
-log "- [Patches Changelog]($(grep "\[Changelog\]" "$TEMP_DIR/*-rv/changelog.md" | sed 's/.*(\(.*\))/\1/'))"
+#log "## 📋 Detailed Changelogs"
+#log "- [Patches Changelog]($(grep "\[Changelog\]" "$TEMP_DIR/*-rv/changelog.md" | sed 's/.*(\(.*\))/\1/'))"
 log ""
 
 # Applications ignorées
