@@ -148,10 +148,26 @@ jobs:
 
       - name: Generate Step Summary
         run: |
-          echo "# Build Summary" >> $GITHUB_STEP_SUMMARY
-          echo "## Modules" >> $GITHUB_STEP_SUMMARY
-          ls build/*.zip | sed 's|build/||' | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
-          echo "## APKs" >> $GITHUB_STEP_SUMMARY
-          ls build/*.apk | sed 's|build/||' | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
-          echo "## Build Log" >> $GITHUB_STEP_SUMMARY
+          echo "# 🏗️ Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "## 📦 Modules" >> $GITHUB_STEP_SUMMARY
+          echo "| Module | Download Link |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|---------------|" >> $GITHUB_STEP_SUMMARY
+          for file in build/*.zip; do
+            name=$(basename "$file")
+            echo "| $name | [Download](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/releases/download/${{ steps.next_ver_code.outputs.NEXT_VER_CODE }}/${name}) |" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "## 📱 APKs" >> $GITHUB_STEP_SUMMARY
+          echo "| APK | Download Link |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|---------------|" >> $GITHUB_STEP_SUMMARY
+          for file in build/*.apk; do
+            name=$(basename "$file")
+            echo "| $name | [Download](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/releases/download/${{ steps.next_ver_code.outputs.NEXT_VER_CODE }}/${name}) |" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "## 📋 Build Log" >> $GITHUB_STEP_SUMMARY
           cat build.md >> $GITHUB_STEP_SUMMARY

@@ -40,13 +40,30 @@ jobs:
 
       - name: Generate Step Summary
         run: |
-          echo "# CI Check Summary" >> $GITHUB_STEP_SUMMARY
-          echo "Should Build: ${{ steps.should_build.outputs.SHOULD_BUILD }}" >> $GITHUB_STEP_SUMMARY
+          echo "# 🚀 CI Check Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "## 🔍 Build Status" >> $GITHUB_STEP_SUMMARY
+          echo "| Status | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Should Build | ${{ steps.should_build.outputs.SHOULD_BUILD }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
           if [ "${{ steps.should_build.outputs.SHOULD_BUILD }}" = "1" ]; then
+            echo "## 🏗️ Build Action" >> $GITHUB_STEP_SUMMARY
             echo "A new build will be triggered." >> $GITHUB_STEP_SUMMARY
           else
+            echo "## ℹ️ Build Action" >> $GITHUB_STEP_SUMMARY
             echo "No new build is necessary at this time." >> $GITHUB_STEP_SUMMARY
           fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "## 📊 Additional Information" >> $GITHUB_STEP_SUMMARY
+          echo "| Item | Details |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|---------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Workflow | ${{ github.workflow }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Run ID | ${{ github.run_id }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Triggered by | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
 
     outputs:
       SHOULD_BUILD: ${{ steps.should_build.outputs.SHOULD_BUILD }}
