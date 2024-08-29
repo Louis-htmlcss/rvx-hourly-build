@@ -145,3 +145,13 @@ jobs:
           MSG=${MSG:0:9450}
           POST="https://api.telegram.org/bot${TG_TOKEN}/sendMessage"
           curl -X POST --data-urlencode "parse_mode=Markdown" --data-urlencode "disable_web_page_preview=true" --data-urlencode "text=${MSG}" --data-urlencode "chat_id=${TG_CHAT}" "$POST"
+
+      - name: Generate Step Summary
+        run: |
+          echo "# Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## Modules" >> $GITHUB_STEP_SUMMARY
+          ls build/*.zip | sed 's|build/||' | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
+          echo "## APKs" >> $GITHUB_STEP_SUMMARY
+          ls build/*.apk | sed 's|build/||' | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
+          echo "## Build Log" >> $GITHUB_STEP_SUMMARY
+          cat build.md >> $GITHUB_STEP_SUMMARY

@@ -38,6 +38,16 @@ jobs:
         run: |
           gh run list -L400 --json databaseId -q '.[].databaseId' | tail -n+10 | xargs -IID gh api "repos/$GITHUB_REPOSITORY/actions/runs/ID" -X DELETE || :
 
+      - name: Generate Step Summary
+        run: |
+          echo "# CI Check Summary" >> $GITHUB_STEP_SUMMARY
+          echo "Should Build: ${{ steps.should_build.outputs.SHOULD_BUILD }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.should_build.outputs.SHOULD_BUILD }}" = "1" ]; then
+            echo "A new build will be triggered." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "No new build is necessary at this time." >> $GITHUB_STEP_SUMMARY
+          fi
+
     outputs:
       SHOULD_BUILD: ${{ steps.should_build.outputs.SHOULD_BUILD }}
 
