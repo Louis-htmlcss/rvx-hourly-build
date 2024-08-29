@@ -5,32 +5,8 @@ enable-magisk-update = true   # set this to false if you do not want to receive 
 
 # you can use rvmm-config-gen to generate a config
 
-[YouTube]
-build-mode = "both"
-excluded-patches = ""
-included-patches = ""
-version = "auto"
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.youtube"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube" # fallback
 
-[Music]
-build-mode = "both"
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.youtube.music"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
-arch = "both"
-
-[Music-Extended]
-app-name = "Music"
-patches-source = "inotia00/revanced-patches"
-integrations-source = "inotia00/revanced-integrations"
-cli-source = "inotia00/revanced-cli"
-rv-brand = "ReVanced Extended"
-build-mode = "both"
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.youtube.music"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
-arch = "both"
-
-[YouTube-Extended]
+[YouTube-Extended-inotia00]
 app-name = "YouTube"
 patches-source = "inotia00/revanced-patches"
 integrations-source = "inotia00/revanced-integrations"
@@ -39,34 +15,184 @@ rv-brand = "ReVanced Extended"
 build-mode = "both"
 archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.youtube"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
+uptodown-dlurl = "https://youtube.en.uptodown.com/android"
+included-patches = "'Custom header for YouTube' 'Force hide player buttons background' 'Hide Shorts dimming' 'MaterialYou' 'Visual preferences icons'"
+excluded-patches = "'Custom branding icon for YouTube' 'Custom branding name for YouTube'"
 
-[Twitter]
-build-mode = "apk"
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.twitter.android"
+[YouTube-rufusin]
+apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube/"
+patches-source = "rufusin/revanced-patches"
+integrations-source = "rufusin/revanced-integrations"
+rv-brand = "rufusin ReVanced"
+build-mode = "both"
+included-patches = "'Change player flyout panel toggles' 'Enable debug logging' 'Force disable Shorts dim' 'Force hide animated button background' 'Force hide double tap to like animations' 'Force hide fullscreen button' 'Force hide player buttons background' 'Force hide player chapters' 'Force hide voice search button' 'MaterialYou' 'Spoof player parameters'"
 
-[Twitch]
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/tv.twitch.android.app"
+[YouTube-anddea]
+apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube/"
+patches-source = "anddea/revanced-patches"
+integrations-source = "anddea/revanced-integrations"
+rv-brand = "anddea ReVanced"
+build-mode = "both"
+included-patches = "'Hide double tap overlay filter' 'Hide player button background' 'MaterialYou'"
+excluded-patches = "'Custom branding name YouTube' 'Custom package name'"
 
-[TikTok]
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.zhiliaoapp.musically"
-included-patches = "'SIM spoof'"
+[YouTube-YT-Advanced]
+apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube/"
+patches-source = "YT-Advanced/ReX-patches"
+integrations-source = "YT-Advanced/revanced-integrations"
+rv-brand = "YT-Advanced ReVanced"
+build-mode = "both"
+included-patches = "'Add splash animation' 'Change player flyout panel toggles' 'Disable landscape mode' 'Enable debug logging' 'Hide animated button background' 'Hide double tap overlay filter' 'Hide double tap to like animations' 'Hide fullscreen button' 'Hide player button background' 'Hide player chapters' 'Hide voice search button' 'MaterialYou' 'Shorts outline button' 'Spoof player parameters'"
+excluded-patches = "'Custom branding icon YouTube' 'Custom branding name YouTube'"
 
-[Reddit-Extended]
+[YouTube-d4n3436-android5]
+apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube/"
+patches-source = "d4n3436/revanced-patches-android5"
+integrations-source = "d4n3436/revanced-integrations"
+rv-brand = "d4n3436 ReVanced"
+build-mode = "both"
+included-patches = "'check-android-version' 'custom-video-speed' 'default-video-quality' 'default-video-speed' 'disable-haptic-feedback' 'disable-landscape-mode' 'disable-update-screen' 'enable-external-browser' 'enable-minimized-playback' 'enable-old-quality-layout' 'enable-open-links-directly' 'enable-seekbar-tapping' 'enable-tablet-miniplayer' 'enable-wide-searchbar' 'force-premium-heading' 'force-vp9-codec' 'header-switch' 'hide-auto-captions' 'hide-auto-player-popup-panels' 'hide-autoplay-button' 'hide-cast-button' 'hide-channel-watermark' 'hide-comment-component' 'hide-create-button' 'hide-crowdfunding-box' 'hide-email-address' 'hide-endscreen-cards' 'hide-endscreen-overlay' 'hide-firsttime-background-notification' 'hide-fullscreen-panels' 'hide-general-ads' 'hide-info-cards' 'hide-live-chat-button' 'hide-mix-playlists' 'hide-next-prev-button' 'hide-player-captions-button' 'hide-player-overlay-filter' 'hide-shorts-button' 'hide-shorts-component' 'hide-snackbar' 'hide-suggested-actions' 'hide-time-and-seekbar' 'hide-tooltip-content' 'hide-video-ads' 'layout-switch' 'materialyou' 'microg-support' 'optimize-resource' 'overlay-buttons' 'patch-options' 'return-youtube-dislike' 'settings' 'sponsorblock' 'spoof-app-version' 'spoof-client' 'swipe-controls' 'switch-create-notification' 'theme' 'translations'"
+
+[YouTube-kitadai31-android6-7]
+apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube/"
+patches-source = "kitadai31/revanced-patches-android6-7"
+integrations-source = "kitadai31/revanced-integrations"
+rv-brand = "kitadai31 ReVanced"
+build-mode = "both"
+included-patches = "'check-android-version' 'custom-seekbar-color' 'custom-video-speed' 'default-video-quality' 'default-video-speed' 'disable-haptic-feedback' 'disable-landscape-mode' 'disable-update-screen' 'enable-external-browser' 'enable-minimized-playback' 'enable-old-quality-layout' 'enable-open-links-directly' 'enable-seekbar-tapping' 'enable-tablet-miniplayer' 'enable-wide-searchbar' 'force-premium-heading' 'force-vp9-codec' 'header-switch' 'hide-auto-captions' 'hide-auto-player-popup-panels' 'hide-autoplay-button' 'hide-button-container' 'hide-cast-button' 'hide-channel-watermark' 'hide-comment-component' 'hide-create-button' 'hide-crowdfunding-box' 'hide-email-address' 'hide-endscreen-cards' 'hide-endscreen-overlay' 'hide-filmstrip-overlay' 'hide-firsttime-background-notification' 'hide-flyout-panel' 'hide-fullscreen-panels' 'hide-general-ads' 'hide-info-cards' 'hide-live-chat-button' 'hide-mix-playlists' 'hide-next-prev-button' 'hide-player-captions-button' 'hide-player-overlay-filter' 'hide-shorts-button' 'hide-shorts-component' 'hide-snackbar' 'hide-startup-shorts-player' 'hide-suggested-actions' 'hide-time-and-seekbar' 'hide-tooltip-content' 'hide-video-ads' 'layout-switch' 'materialyou' 'microg-support' 'optimize-resource' 'overlay-buttons' 'patch-options' 'remove-player-button-background' 'return-youtube-dislike' 'settings' 'shorts-seek' 'sponsorblock' 'spoof-app-version' 'spoof-client' 'swipe-controls' 'switch-create-notification' 'theme' 'translations'"
+
+##########################################################################################
+
+[Music-Extended-inotia00] #works
+app-name = "Music"
 patches-source = "inotia00/revanced-patches"
 integrations-source = "inotia00/revanced-integrations"
 cli-source = "inotia00/revanced-cli"
 rv-brand = "ReVanced Extended"
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.reddit.frontpage"
-
-[Messenger]
+build-mode = "both"
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.youtube.music"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
+included-patches = "'Custom header for YouTube Music' 'Hide overlay filter' 'Hide player overlay filter'"
+excluded-patches = "'Custom branding icon for YouTube Music' 'Custom branding name for YouTube Music'"
 enabled = false
-apkmirror-dlurl = "https://www.apkmirror.com/apk/facebook-2/messenger/"
-arch = "arm64-v8a"
 
-[Spotify]
-enabled = false
-uptodown-dlurl = "https://spotify.en.uptodown.com/android"
+[Music-rufusin]
+apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube-music/"
+patches-source = "rufusin/revanced-patches"
+integrations-source = "rufusin/revanced-integrations"
+rv-brand = "rufusin ReVanced"
+build-mode = "both"
+included-patches = "'Disable overlay filter' 'Enable color match player' 'Enable debug logging' 'Enable old player background' 'Enable old player layout' 'Enable old style miniplayer' 'Enable zen mode' 'Force hide voice search button' 'Hide player overlay filter' 'Replace cast button'"
 
-[IconPackStudio]
+[Music-anddea]
+apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube-music/"
+patches-source = "anddea/revanced-patches"
+integrations-source = "anddea/revanced-integrations"
+rv-brand = "anddea ReVanced"
+build-mode = "both"
+included-patches = "'Hide double tap overlay filter' 'Hide overlay filter' 'Hide player overlay filter' 'Replace cast button'"
+excluded-patches = "'Custom branding icon YouTube Music' 'Custom branding name YouTube Music'"
+
+[Music]
+apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube-music/"
+patches-source = "YT-Advanced/ReX-patches"
+integrations-source = "YT-Advanced/revanced-integrations"
+rv-brand = "YT-Advanced ReVanced"
+build-mode = "both"
+included-patches = "'Disable overlay filter' 'Enable color match player' 'Enable debug logging' 'Enable old player background' 'Enable old player layout' 'Enable old style miniplayer' 'Enable zen mode' 'Hide double tap overlay filter' 'Hide player overlay filter' 'Hide voice search button' 'Replace cast button'"
+excluded-patches = "'Custom branding icon YouTube Music' 'Custom branding name YouTube Music'"
+
+##########################################################################################
+
+
+[Twitch]
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/tv.twitch.android.app"
 enabled = false
-apkmirror-dlurl = "https://www.apkmirror.com/apk/smart-launcher-team/icon-pack-studio/"
+
+##########################################################################################
+
+[Reddit-Extended-inotia00]
+patches-source = "inotia00/revanced-patches"
+integrations-source = "inotia00/revanced-integrations"
+cli-source = "inotia00/revanced-cli"
+rv-brand = "ReVanced Extended"
+build-mode = "both"
+version = "auto"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/redditinc/reddit/"
+uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
+enabled = false
+
+[Reddit-rufusin]
+apkmirror-dlurl = "https://apkmirror.com/apk/redditinc/reddit/"
+patches-source = "rufusin/revanced-patches"
+integrations-source = "rufusin/revanced-integrations"
+rv-brand = "rufusin ReVanced"
+build-mode = "both"
+
+[Reddit-anddea]
+apkmirror-dlurl = "https://apkmirror.com/apk/redditinc/reddit/"
+patches-source = "anddea/revanced-patches"
+integrations-source = "anddea/revanced-integrations"
+rv-brand = "anddea ReVanced"
+build-mode = "both"
+
+[Reddit]
+apkmirror-dlurl = "https://apkmirror.com/apk/redditinc/reddit/"
+patches-source = "YT-Advanced/ReX-patches"
+integrations-source = "YT-Advanced/revanced-integrations"
+rv-brand = "YT-Advanced ReVanced"
+build-mode = "both"
+
+##########################################################################################
+
+[X-material-design] #works
+patches-source = "crimera/piko"
+integrations-source = "crimera/revanced-integrations"
+build-mode = "both"
+rv-brand = "Piko"
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter/"
+uptodown-dlurl = "https://twitter.en.uptodown.com/android"
+included-patches = "'Hide Banner' 'Hide Live Threads' 'Disable chirp font' 'Hide Community Notes' 'Hide FAB' 'Hide FAB Menu Buttons' 'Custom sharing domain' 'Customize profile tabs' 'Hide promote button' 'Force enable translate' 'Add ability to copy media link' 'Customize Navigation Bar items' 'Hide promote button' 'Force enable translate' 'Delete from database'"
+enabled = false
+
+##########################################################################################
+
+[Strava] #works
+build-mode = "both"
+version = "auto"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/strava-inc/strava-running-and-cycling-gps/"
+uptodown-dlurl = "https://strava.en.uptodown.com/android"
+enabled = false
+
+##########################################################################################
+
+[Yuka] #works
+build-mode = "both"
+version = "auto"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/yuka-apps/yuka-food-cosmetic-scan/"
+uptodown-dlurl = "https://yuka.en.uptodown.com/android"
+enabled = false
+
+##########################################################################################
+
+[Photomath]
+build-mode = "both"
+version = "auto"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/photomath/"
+uptodown-dlurl = "https://uptodown-android.en.uptodown.com/android"
+apkpure-dlurl = "https://apkpure.com/photomath/com.microblink.photomath"
+enabled = false
+
+
+
+
+
+
+
+
+
+
+
+
+
