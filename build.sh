@@ -190,15 +190,15 @@ log "| 🔒 Use Zygisk-Detach | [Zygisk-Detach](https://github.com/j-hc/zygisk-d
 log "| 📘 More Information | [ReVanced Magisk Module](https://github.com/j-hc/revanced-magisk-module) |"
 log ""
 
-# Changelog des composants
-log "## 🔄 Component Changes"
-create_markdown_table "Component" "Version"
-while IFS= read -r line; do
-    component=$(echo "$line" | cut -d: -f1)
-    version=$(echo "$line" | cut -d: -f2- | sed 's/^ *//')
-    log "| $component | $version |"
-done < "$TEMP_DIR/*-rv/changelog.md"
-log ""
+# # Changelog des composants
+# log "## 🔄 Component Changes"
+# create_markdown_table "Component" "Version"
+# while IFS= read -r line; do
+#     component=$(echo "$line" | cut -d: -f1)
+#     version=$(echo "$line" | cut -d: -f2- | sed 's/^ *//')
+#     log "| $component | $version |"
+# done < "$TEMP_DIR/*-rv/changelog.md"
+# log ""
 
 # Liens vers les changelogs complets
 #log "## 📋 Detailed Changelogs"
