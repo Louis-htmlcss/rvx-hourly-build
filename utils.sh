@@ -156,8 +156,54 @@ _req() {
 		mv -f "$dlp" "$op"
 	fi
 }
-req() { _req "$1" "$2" --header="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0"; }
-gh_req() { _req "$1" "$2" --header="$GH_HEADER"; }
+req() {
+    local max_retries=5
+    local retry_delay=10
+    local attempt=1
+    
+    while [ $attempt -le $max_retries ]; do
+        if _req "$1" "$2" --header="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0"; then
+            return 0
+        else
+            local status=$?
+            if [ $status -eq 429 ]; then
+                epr "ERROR 429: Too Many Requests. Retrying in $retry_delay seconds (Attempt $attempt/$max_retries)"
+                sleep $retry_delay
+                retry_delay=$((retry_delay * 2))
+                attempt=$((attempt + 1))
+            else
+                return $status
+            fi
+        fi
+    done
+    
+    epr "ERROR: Max retries reached. Could not complete the request."
+    return 1
+}
+gh_req() {
+    local max_retries=5
+    local retry_delay=10
+    local attempt=1
+    
+    while [ $attempt -le $max_retries ]; do
+        if _req "$1" "$2" --header="$GH_HEADER"; then
+            return 0
+        else
+            local status=$?
+            if [ $status -eq 429 ]; then
+                epr "ERROR 429: Too Many Requests. Retrying in $retry_delay seconds (Attempt $attempt/$max_retries)"
+                sleep $retry_delay
+                retry_delay=$((retry_delay * 2))
+                attempt=$((attempt + 1))
+            else
+                return $status
+            fi
+        fi
+    done
+    
+    epr "ERROR: Max retries reached. Could not complete the request."
+    return 1
+}
 gh_dl() {
 	if [ ! -f "$1" ]; then
 		pr "Getting '$1' from '$2'"
