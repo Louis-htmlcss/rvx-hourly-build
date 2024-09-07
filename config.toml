@@ -64,6 +64,17 @@ included-patches = "'check-android-version' 'custom-seekbar-color' 'custom-video
 
 ##########################################################################################
 
+[Music-Extended]
+app-name = "Music"
+patches-source = "inotia00/revanced-patches"
+integrations-source = "inotia00/revanced-integrations"
+cli-source = "inotia00/revanced-cli"
+rv-brand = "ReVanced Extended"
+build-mode = "both"
+archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.youtube.music"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
+
+
 [Music-Extended-inotia00] #works
 app-name = "Music"
 patches-source = "inotia00/revanced-patches"
