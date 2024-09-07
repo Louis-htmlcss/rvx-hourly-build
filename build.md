@@ -1,14 +1,15 @@
 YouTube-d4n3436-android5: 16.40.36
 YouTube-kitadai31-android6-7: 17.34.36
+Reddit-Extended-inotia00: 2024.17.0
 YouTube-Extended-inotia00: 19.16.39
 YouTube-anddea: 19.16.39
 YouTube-rufusin: 19.16.39
-Reddit-Extended-inotia00: 2024.17.0
+Reddit-rufusin: 2024.22.0
 Reddit-anddea: 2024.17.0
 Strava: 320.12
-Reddit-rufusin: 2024.22.0
 Yuka: 4.29
-X-material-design: 10.55.1-release.0
+Photomath: 8.37.0
+X-material-design: 10.57.0-release.0
 # 📦 ReVanced Build Changelog
 
 ## ℹ️ Important Information
