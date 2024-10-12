@@ -1,13 +1,8 @@
 YouTube-Extended-inotia00: 19.16.39
-YouTube-rufusin: 19.16.39
 YouTube-anddea: 19.16.39
+YouTube-rufusin: 19.16.39
 YouTube-d4n3436-android5: 16.40.36
 YouTube-kitadai31-android6-7: 17.34.36
-Reddit-Extended-inotia00: 2024.17.0
-Reddit-rufusin: 2024.22.0
-Reddit-anddea: 2024.17.0
-X-material-design: 10.60.0-release.0
-Strava: 320.12
 # 📦 ReVanced Build Changelog
 
 ## ℹ️ Important Information
